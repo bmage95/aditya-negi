@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aditya Negi — Full-Stack Developer</title>
+<meta name="description" content="Portfolio of Aditya Negi — full-stack developer building fast, thoughtful software.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ BACKGROUND FX ============ -->
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+<div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <a href="#top" class="logo">AN<span>//</span></a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#stack">Stack</a>
+    <a href="#work">Work</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a href="#contact" class="btn btn-sm">Let's talk <span class="arrow">↗</span></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="eyebrow"><span class="blink">▍</span> initializing_portfolio.exe</div>
+      <h1>Full-Stack<br><span class="accent">Developer</span><br>&amp; Builder<span class="plus">+</span></h1>
+      <p class="hero-sub">Hi, I'm <b>Aditya Negi</b> — I design and ship fast, thoughtful software.
+        From <span class="hl">agentic AI &amp; RAG systems</span> to full product builds, I turn ideas into things people actually use.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn">View my work <span class="arrow">↗</span></a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+      <div class="socials">
+        <span class="socials-label">// find me</span>
+        <a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">X</a><a href="#">Email</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="terminal">
+        <div class="term-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="term-title">~/aditya — zsh</span>
+        </div>
+        <pre class="term-body"><code id="termCode"><span class="c-mute">$</span> whoami
+<span class="c-acc">aditya_negi</span>
+<span class="c-mute">$</span> cat role.txt
+<span class="c-txt">Full-stack dev · AI &amp; RAG · Finance-tech</span>
+<span class="c-mute">$</span> ls ./skills
+<span class="c-txt">react  next  typescript  python
+node   postgres  llm-apps  supabase</span>
+<span class="c-mute">$</span> status --now
+<span class="c-ok">● available for work</span>
+<span class="c-mute">$</span> <span class="blink">▍</span></code></pre>
+      </div>
+      <div class="badge-spin">
+        <span>● OPEN TO WORK ● BUILDING ● SHIPPING </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TICKER ============ -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>React</span><i>✦</i><span>Next.js</span><i>✦</i><span>TypeScript</span><i>✦</i><span>Python</span><i>✦</i><span>Node</span><i>✦</i><span>PostgreSQL</span><i>✦</i><span>Supabase</span><i>✦</i><span>LLM / RAG</span><i>✦</i><span>Tailwind</span><i>✦</i>
+      <span>React</span><i>✦</i><span>Next.js</span><i>✦</i><span>TypeScript</span><i>✦</i><span>Python</span><i>✦</i><span>Node</span><i>✦</i><span>PostgreSQL</span><i>✦</i><span>Supabase</span><i>✦</i><span>LLM / RAG</span><i>✦</i><span>Tailwind</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats reveal">
+    <div class="stat"><div class="num" data-target="30">30+</div><div class="lbl">Projects shipped</div></div>
+    <div class="stat"><div class="num" data-target="5">5+</div><div class="lbl">Years building</div></div>
+    <div class="stat"><div class="num" data-target="12">12+</div><div class="lbl">Happy clients</div></div>
+    <div class="stat"><div class="num">∞</div><div class="lbl">Cups of coffee</div></div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about reveal" id="about">
+    <div class="section-head">
+      <span class="tag">[ 01 ] // about</span>
+      <h2>Builder at heart,<br>engineer by craft.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo">
+        <div class="photo-ph">IMG</div>
+        <div class="photo-tag">aditya.jpg</div>
+      </div>
+      <div class="about-text">
+        <p>I'm a full-stack developer who likes living at the edge of product and AI. I've built
+        <span class="hl">agentic search &amp; RAG systems</span>, finance tooling, and end-to-end web products —
+        the kind of work where the hard part is making complex things feel simple.</p>
+        <p>Placeholder bio — tell me the real story and I'll drop it in. Where you're based, what you love
+        building, what you're looking for next.</p>
+        <ul class="about-list">
+          <li>◆ Based in <b>[ Your City ]</b></li>
+          <li>◆ Focused on <b>AI-powered products &amp; clean web builds</b></li>
+          <li>◆ Currently <b>open to freelance &amp; full-time</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services reveal" id="services">
+    <div class="section-head">
+      <span class="tag">[ 02 ] // what i do</span>
+      <h2>All-kinds-of-code<br>solutions.</h2>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="card-ic">&lt;/&gt;</div>
+        <h3>Web &amp; App Development</h3>
+        <p>Fast, responsive products built with React, Next.js and TypeScript — front to back.</p>
+        <ul><li>Front-end engineering</li><li>Full-stack apps</li><li>APIs &amp; databases</li></ul>
+        <span class="card-n">01</span>
+      </article>
+      <article class="card card-hot">
+        <div class="card-ic">✦</div>
+        <h3>AI &amp; RAG Systems</h3>
+        <p>Agentic search, retrieval pipelines and LLM-powered features that actually ship.</p>
+        <ul><li>RAG &amp; agents</li><li>LLM app engineering</li><li>Data pipelines</li></ul>
+        <span class="card-n">02</span>
+      </article>
+      <article class="card">
+        <div class="card-ic">◈</div>
+        <h3>Product &amp; Design</h3>
+        <p>From Figma to shipped — interfaces that are clean, usable and on-brand.</p>
+        <ul><li>UI / UX design</li><li>Design systems</li><li>Prototyping</li></ul>
+        <span class="card-n">03</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="skills reveal" id="stack">
+    <div class="section-head">
+      <span class="tag">[ 03 ] // the stack</span>
+      <h2>Tools I build with.</h2>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-cat">
+        <div class="skill-top"><span class="skill-ic">▤</span><h3>Frontend</h3></div>
+        <div class="chips">
+          <span>React</span><span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>Framer Motion</span><span>HTML5</span><span>CSS3</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-top"><span class="skill-ic">⌘</span><h3>Backend</h3></div>
+        <div class="chips">
+          <span>Node.js</span><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Supabase</span><span>REST APIs</span><span>Redis</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-top"><span class="skill-ic">✦</span><h3>AI &amp; Data</h3></div>
+        <div class="chips">
+          <span>LLM Apps</span><span>RAG</span><span>Agents</span><span>Vector DBs</span><span>Embeddings</span><span>LangChain</span><span>Pandas</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-top"><span class="skill-ic">◇</span><h3>Tools &amp; Ops</h3></div>
+        <div class="chips">
+          <span>Git</span><span>Docker</span><span>Vercel</span><span>Figma</span><span>Linux</span><span>CI / CD</span><span>Postman</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section class="work reveal" id="work">
+    <div class="section-head">
+      <span class="tag">[ 04 ] // selected work</span>
+      <h2>Explore my<br>top creations.</h2>
+    </div>
+    <div class="projects">
+      <article class="project">
+        <div class="project-img ph-1"><span class="proj-kicker">CASE STUDY</span></div>
+        <div class="project-meta">
+          <div><span class="proj-cat">AI · Search</span><h3>Agentic RAG Engine</h3></div>
+          <a href="#" class="proj-link" aria-label="Open">↗</a>
+        </div>
+      </article>
+      <article class="project">
+        <div class="project-img ph-2"><span class="proj-kicker">WEB APP</span></div>
+        <div class="project-meta">
+          <div><span class="proj-cat">Full-Stack</span><h3>Finance Dashboard</h3></div>
+          <a href="#" class="proj-link" aria-label="Open">↗</a>
+        </div>
+      </article>
+      <article class="project">
+        <div class="project-img ph-3"><span class="proj-kicker">MOBILE</span></div>
+        <div class="project-meta">
+          <div><span class="proj-cat">Product</span><h3>Placeholder App</h3></div>
+          <a href="#" class="proj-link" aria-label="Open">↗</a>
+        </div>
+      </article>
+      <article class="project">
+        <div class="project-img ph-4"><span class="proj-kicker">SAAS</span></div>
+        <div class="project-meta">
+          <div><span class="proj-cat">Web</span><h3>Placeholder SaaS</h3></div>
+          <a href="#" class="proj-link" aria-label="Open">↗</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process reveal" id="process">
+    <div class="section-head">
+      <span class="tag">[ 05 ] // how i work</span>
+      <h2>From idea<br>to shipped.</h2>
+    </div>
+    <div class="proc-flow">
+      <div class="proc-step">
+        <div class="proc-node">01</div>
+        <h3>Discovery</h3>
+        <p>Understand the problem, users and constraints. Define what “done” means before a line of code.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-node">02</div>
+        <h3>Architecture</h3>
+        <p>Design the data model, stack and system — the boring decisions that make everything else easy.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-node">03</div>
+        <h3>Build</h3>
+        <p>Ship in tight iterations with clean, tested code and steady communication throughout.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-node">04</div>
+        <h3>Ship &amp; iterate</h3>
+        <p>Deploy, measure, refine. Hand over docs and keep improving based on real usage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="quotes reveal">
+    <div class="section-head">
+      <span class="tag">[ 06 ] // feedback</span>
+      <h2>What people say.</h2>
+    </div>
+    <div class="quote-grid">
+      <blockquote>
+        <p>“Placeholder testimonial — Aditya shipped fast, communicated clearly, and the result
+        exceeded what we scoped. Would work with him again.”</p>
+        <footer><span class="q-av">R</span><span><b>Client Name</b><small>Role · Company</small></span></footer>
+      </blockquote>
+      <blockquote>
+        <p>“Placeholder testimonial — deep technical skill paired with real product sense.
+        Rare combination, highly recommended.”</p>
+        <footer><span class="q-av">S</span><span><b>Client Name</b><small>Role · Company</small></span></footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ============ RESUME ============ -->
+  <section class="resume reveal" id="resume">
+    <div class="resume-inner">
+      <div class="resume-left">
+        <span class="tag">[ 07 ] // resume</span>
+        <h2>The full story,<br>on one page.</h2>
+        <p>Experience, education and the complete toolkit — grab the PDF or skim the highlights.</p>
+        <a href="#" class="btn" download>Download CV <span class="arrow">↓</span></a>
+        <span class="resume-upd">// last updated — [ month, year ]</span>
+      </div>
+      <div class="resume-right">
+        <div class="exp">
+          <div class="exp-row">
+            <span class="exp-yr">2024 — now</span>
+            <div><b>Founder / Full-Stack Dev</b><small>Pocket Fund · finance-tech &amp; AI</small></div>
+          </div>
+          <div class="exp-row">
+            <span class="exp-yr">20XX — 2024</span>
+            <div><b>[ Role Title ]</b><small>[ Company ] · [ what you did ]</small></div>
+          </div>
+          <div class="exp-row">
+            <span class="exp-yr">20XX</span>
+            <div><b>[ Role / Degree ]</b><small>[ Company / School ]</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact reveal" id="contact">
+    <span class="tag center">[ 08 ] // let's build</span>
+    <h2>Got something<br>in mind?</h2>
+    <p>Whether it's a product, an AI feature, or a rough idea — let's make it real.</p>
+    <a href="mailto:dev@pocket-fund.com" class="btn btn-lg">Start a conversation <span class="arrow">↗</span></a>
+    <div class="contact-mail">dev@pocket-fund.com</div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="foot-left">
+    <a href="#top" class="logo">AN<span>//</span></a>
+    <p>Full-stack developer building fast, thoughtful software.</p>
+  </div>
+  <div class="foot-links">
+    <div><span>Menu</span><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+    <div><span>Social</span><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">X</a></div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Aditya Negi. All rights reserved.</span>
+    <span class="foot-status"><i></i> available for work</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
