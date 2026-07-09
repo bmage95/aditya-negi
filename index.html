@@ -202,34 +202,34 @@ node   python  shopify  firebase</span>
       <h2>Explore my<br>top creations.</h2>
     </div>
     <div class="projects">
-      <article class="project">
-        <div class="project-img ph-1"><span class="proj-kicker">AI SOLUTIONS</span></div>
-        <div class="project-meta">
-          <div><span class="proj-cat">AI · Agentic</span><h3>Agentic AI Solutions</h3><p class="proj-desc">Custom agentic AI & RAG systems built for companies — intelligent search, multi-agent orchestration, and LLM-powered automation.</p></div>
-          <a href="#" class="proj-link" aria-label="Open">↗</a>
-        </div>
-      </article>
-      <article class="project">
-        <div class="project-img ph-2"><span class="proj-kicker">WEBSITE</span></div>
-        <div class="project-meta">
-          <div><span class="proj-cat">TypeScript · Full-Stack</span><h3>Kautilya PE</h3><p class="proj-desc">Corporate website for a private equity firm — built with TypeScript, clean design and fast performance.</p></div>
-          <a href="https://kautilya-pe.com" class="proj-link" aria-label="Open">↗</a>
-        </div>
-      </article>
-      <article class="project">
+      <a href="javascript:void(0);" onclick="openModal('ontrack-demo.mp4')" class="project">
         <div class="project-img ph-3"><span class="proj-kicker">MOBILE</span></div>
         <div class="project-meta">
           <div><span class="proj-cat">Mobile · EdTech</span><h3>MPSTME OnTrack</h3><p class="proj-desc">Mobile app for MPSTME students to track academics, attendance, and campus resources on the go.</p></div>
-          <a href="ontrack-demo.mp4" target="_blank" class="proj-link" aria-label="Open">↗</a>
+          <span class="proj-link" aria-label="Open">↗</span>
         </div>
-      </article>
-      <article class="project">
+      </a>
+      <a href="https://kautilya-pe.com" target="_blank" rel="noopener" class="project">
+        <div class="project-img ph-2"><span class="proj-kicker">WEBSITE</span></div>
+        <div class="project-meta">
+          <div><span class="proj-cat">TypeScript · Full-Stack</span><h3>Kautilya PE</h3><p class="proj-desc">Corporate website for a private equity firm — built with TypeScript, clean design and fast performance.</p></div>
+          <span class="proj-link" aria-label="Open">↗</span>
+        </div>
+      </a>
+      <a href="https://mycreativecamp.com" target="_blank" rel="noopener" class="project">
         <div class="project-img ph-4"><span class="proj-kicker">E-COMMERCE</span></div>
         <div class="project-meta">
           <div><span class="proj-cat">Shopify · E-Commerce</span><h3>MyCreativeCamp</h3><p class="proj-desc">Shopify-powered e-commerce platform for creative workshops, camps and educational experiences.</p></div>
-          <a href="https://mycreativecamp.com" class="proj-link" aria-label="Open">↗</a>
+          <span class="proj-link" aria-label="Open">↗</span>
         </div>
-      </article>
+      </a>
+      <div class="project">
+        <div class="project-img ph-1"><span class="proj-kicker">AI SOLUTIONS</span></div>
+        <div class="project-meta">
+          <div><span class="proj-cat">AI · Agentic</span><h3>Agentic AI Solutions</h3><p class="proj-desc">Custom agentic AI & RAG systems built for companies — intelligent search, multi-agent orchestration, and LLM-powered automation.</p></div>
+          <span class="proj-link" aria-label="Open">↗</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -329,6 +329,14 @@ node   python  shopify  firebase</span>
     <span class="foot-status"><i></i> open for freelance</span>
   </div>
 </footer>
+
+<!-- ============ VIDEO MODAL ============ -->
+<div class="modal-overlay" id="vidModal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <video id="modalVideo" controls></video>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

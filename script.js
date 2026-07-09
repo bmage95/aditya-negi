@@ -232,3 +232,25 @@ if (!reduce && window.matchMedia('(pointer:fine)').matches) {
     });
   });
 })();
+
+// ---------- video modal ----------
+function openModal(videoSrc) {
+  const modal = document.getElementById('vidModal');
+  const video = document.getElementById('modalVideo');
+  video.src = videoSrc;
+  modal.classList.add('active');
+  video.play();
+}
+
+function closeModal() {
+  const modal = document.getElementById('vidModal');
+  const video = document.getElementById('modalVideo');
+  modal.classList.remove('active');
+  video.pause();
+  video.src = '';
+}
+
+// Close on escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
