@@ -216,9 +216,9 @@ section{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
 .proj-kicker{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:rgba(255,255,255,.85);
   background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.18);padding:5px 10px;border-radius:20px;backdrop-filter:blur(4px);}
 .ph-1{background:linear-gradient(135deg,#0E3A4A,#123A6B 60%,#1B2140);}
-.ph-2{background:linear-gradient(135deg,#1A1538,#2A1B4A 60%,#0F0E1E);}
-.ph-3{background:linear-gradient(135deg,#0E2A3A,#123A5B 60%,#0A1828);}
-.ph-4{background:linear-gradient(135deg,#2A1E0E,#3A2A12 60%,#1A150C);}
+.ph-2{background:linear-gradient(135deg,#1A1538,#2A1B4A 60%,#0F0E1E); background-image: url('https://image.thum.io/get/width/800/crop/800/https://kautilya-pe.com/'); background-size: cover; background-position: center top;}
+.ph-3{background:linear-gradient(135deg,#0E2A3A,#123A5B 60%,#0A1828); background-image: url('ontrack.jpg'); background-size: cover; background-position: center top;}
+.ph-4{background:linear-gradient(135deg,#2A1E0E,#3A2A12 60%,#1A150C); background-image: url('https://image.thum.io/get/width/800/crop/800/https://mycreativecamp.com/'); background-size: cover; background-position: center top;}
 .project-meta{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;}
 .proj-cat{font-family:var(--mono);font-size:12px;color:var(--accent);}
 .project-meta h3{font-family:var(--display);font-size:22px;font-weight:600;margin-top:4px;}
@@ -302,7 +302,7 @@ section{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
 .exp{display:flex;flex-direction:column;}
 .exp-row{display:flex;gap:20px;padding:18px 0;border-bottom:1px dashed var(--border);align-items:baseline;}
 .exp-row:last-child{border-bottom:none;}
-.exp-yr{font-family:var(--mono);font-size:12.5px;color:var(--accent);white-space:nowrap;min-width:96px;}
+.exp-yr{font-family:var(--mono);font-size:12.5px;color:var(--accent);white-space:nowrap;min-width:145px;}
 .exp-row b{font-family:var(--display);font-size:16.5px;font-weight:600;}
 .exp-row small{display:block;color:var(--muted);font-family:var(--mono);font-size:12.5px;margin-top:4px;}
 
