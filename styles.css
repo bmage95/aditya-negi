@@ -22,7 +22,7 @@
   --body:'Inter',-apple-system,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth; overflow-x:hidden; max-width:100%; width:100%;}
 body{
   background:var(--bg); color:var(--text); font-family:var(--body);
   line-height:1.6; overflow-x:hidden; position:relative;
