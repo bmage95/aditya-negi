@@ -10,12 +10,19 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#07080D">
+<meta property="og:title" content="Aditya Negi — Full-Stack Developer">
+<meta property="og:description" content="Portfolio of Aditya Negi — full-stack developer building fast, thoughtful software.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="cursor-glow" aria-hidden="true"></div>
 
 <!-- ============ BACKGROUND FX ============ -->
 <div class="bg-grid" aria-hidden="true"></div>
@@ -34,7 +41,7 @@
     <a href="#contact">Contact</a>
   </nav>
   <a href="#contact" class="btn btn-sm">Let's talk <span class="arrow">↗</span></a>
-  <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
 </header>
 
 <main id="top">
@@ -44,15 +51,15 @@
     <div class="hero-left">
       <div class="eyebrow"><span class="blink">▍</span> initializing_portfolio.exe</div>
       <h1>Full-Stack<br><span class="accent">Developer</span><br>&amp; Builder<span class="plus">+</span></h1>
-      <p class="hero-sub">Hi, I'm <b>Aditya Negi</b> — I design and ship fast, thoughtful software.
-        From <span class="hl">agentic AI &amp; RAG systems</span> to full product builds, I turn ideas into things people actually use.</p>
+      <p class="hero-sub">Hi, I'm <b>Aditya Negi</b> — I build fast, thoughtful web &amp; mobile products.
+        From <span class="hl">corporate websites &amp; Shopify stores</span> to cross-platform apps, I turn ideas into things people actually use.</p>
       <div class="hero-cta">
         <a href="#work" class="btn">View my work <span class="arrow">↗</span></a>
         <a href="#contact" class="btn btn-ghost">Get in touch</a>
       </div>
       <div class="socials">
         <span class="socials-label">// find me</span>
-        <a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">X</a><a href="#">Email</a>
+        <a href="https://github.com/bmage95" target="_blank" rel="noopener">GitHub</a><a href="mailto:adityanegi2206@gmail.com">Email</a>
       </div>
     </div>
 
@@ -65,12 +72,12 @@
         <pre class="term-body"><code id="termCode"><span class="c-mute">$</span> whoami
 <span class="c-acc">aditya_negi</span>
 <span class="c-mute">$</span> cat role.txt
-<span class="c-txt">Full-stack dev · AI &amp; RAG · Finance-tech</span>
+<span class="c-txt">Full-stack dev · Web &amp; App · Freelance</span>
 <span class="c-mute">$</span> ls ./skills
-<span class="c-txt">react  next  typescript  python
-node   postgres  llm-apps  supabase</span>
+<span class="c-txt">react  next  typescript  flutter
+node   python  shopify  firebase</span>
 <span class="c-mute">$</span> status --now
-<span class="c-ok">● available for work</span>
+<span class="c-ok">● open for freelance</span>
 <span class="c-mute">$</span> <span class="blink">▍</span></code></pre>
       </div>
       <div class="badge-spin">
@@ -89,9 +96,9 @@ node   postgres  llm-apps  supabase</span>
 
   <!-- ============ STATS ============ -->
   <section class="stats reveal">
-    <div class="stat"><div class="num" data-target="30">30+</div><div class="lbl">Projects shipped</div></div>
-    <div class="stat"><div class="num" data-target="5">5+</div><div class="lbl">Years building</div></div>
-    <div class="stat"><div class="num" data-target="12">12+</div><div class="lbl">Happy clients</div></div>
+    <div class="stat"><div class="num" data-target="12">12+</div><div class="lbl">Projects shipped</div></div>
+    <div class="stat"><div class="num" data-target="3">3+</div><div class="lbl">Years building</div></div>
+    <div class="stat"><div class="num" data-target="6">6+</div><div class="lbl">Happy clients</div></div>
     <div class="stat"><div class="num">∞</div><div class="lbl">Cups of coffee</div></div>
   </section>
 
@@ -103,19 +110,21 @@ node   postgres  llm-apps  supabase</span>
     </div>
     <div class="about-grid">
       <div class="about-photo">
-        <div class="photo-ph">IMG</div>
+        <img src="aditya.jpg" alt="Aditya Negi" class="photo-img">
         <div class="photo-tag">aditya.jpg</div>
       </div>
       <div class="about-text">
-        <p>I'm a full-stack developer who likes living at the edge of product and AI. I've built
-        <span class="hl">agentic search &amp; RAG systems</span>, finance tooling, and end-to-end web products —
-        the kind of work where the hard part is making complex things feel simple.</p>
-        <p>Placeholder bio — tell me the real story and I'll drop it in. Where you're based, what you love
-        building, what you're looking for next.</p>
+        <p>I'm a full-stack developer from Mumbai who loves building products people actually use. From
+        <span class="hl">cross-platform mobile apps</span> and corporate websites to Shopify stores and
+        finance-tech platforms — I focus on shipping clean, fast software that solves real problems.</p>
+        <p>I interned at <b>Jio</b> working on app development &amp; orchestration systems, built apps with
+        <b>JPMorgan Chase</b>, and now work as a Software Developer at <b>Pocket Fund</b>. On the side,
+        I take on freelance projects for clients who need thoughtful, well-crafted builds.</p>
+
         <ul class="about-list">
-          <li>◆ Based in <b>[ Your City ]</b></li>
-          <li>◆ Focused on <b>AI-powered products &amp; clean web builds</b></li>
-          <li>◆ Currently <b>open to freelance &amp; full-time</b></li>
+          <li>◆ Based in <b>Mumbai, India</b></li>
+          <li>◆ Focused on <b>web &amp; app development</b></li>
+          <li>◆ Currently <b>open to freelance</b></li>
         </ul>
       </div>
     </div>
@@ -128,22 +137,22 @@ node   postgres  llm-apps  supabase</span>
       <h2>All-kinds-of-code<br>solutions.</h2>
     </div>
     <div class="cards">
-      <article class="card">
+      <article class="card card-hot">
         <div class="card-ic">&lt;/&gt;</div>
         <h3>Web &amp; App Development</h3>
-        <p>Fast, responsive products built with React, Next.js and TypeScript — front to back.</p>
-        <ul><li>Front-end engineering</li><li>Full-stack apps</li><li>APIs &amp; databases</li></ul>
+        <p>Fast, responsive products built with React, Next.js, Flutter and TypeScript — front to back.</p>
+        <ul><li>Websites &amp; web apps</li><li>Cross-platform mobile apps</li><li>APIs &amp; databases</li></ul>
         <span class="card-n">01</span>
-      </article>
-      <article class="card card-hot">
-        <div class="card-ic">✦</div>
-        <h3>AI &amp; RAG Systems</h3>
-        <p>Agentic search, retrieval pipelines and LLM-powered features that actually ship.</p>
-        <ul><li>RAG &amp; agents</li><li>LLM app engineering</li><li>Data pipelines</li></ul>
-        <span class="card-n">02</span>
       </article>
       <article class="card">
         <div class="card-ic">◈</div>
+        <h3>E-Commerce &amp; Shopify</h3>
+        <p>Custom Shopify stores and e-commerce builds that look great and convert.</p>
+        <ul><li>Shopify development</li><li>Store customisation</li><li>Payment integrations</li></ul>
+        <span class="card-n">02</span>
+      </article>
+      <article class="card">
+        <div class="card-ic">✦</div>
         <h3>Product &amp; Design</h3>
         <p>From Figma to shipped — interfaces that are clean, usable and on-brand.</p>
         <ul><li>UI / UX design</li><li>Design systems</li><li>Prototyping</li></ul>
@@ -162,19 +171,19 @@ node   postgres  llm-apps  supabase</span>
       <div class="skill-cat">
         <div class="skill-top"><span class="skill-ic">▤</span><h3>Frontend</h3></div>
         <div class="chips">
-          <span>React</span><span>Next.js</span><span>TypeScript</span><span>Tailwind</span><span>Framer Motion</span><span>HTML5</span><span>CSS3</span>
+          <span>React</span><span>Next.js</span><span>TypeScript</span><span>Flutter</span><span>Tailwind</span><span>HTML5</span><span>CSS3</span>
         </div>
       </div>
       <div class="skill-cat">
         <div class="skill-top"><span class="skill-ic">⌘</span><h3>Backend</h3></div>
         <div class="chips">
-          <span>Node.js</span><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Supabase</span><span>REST APIs</span><span>Redis</span>
+          <span>Node.js</span><span>Python</span><span>Firebase</span><span>MongoDB</span><span>Express.js</span><span>REST APIs</span><span>Supabase</span>
         </div>
       </div>
       <div class="skill-cat">
-        <div class="skill-top"><span class="skill-ic">✦</span><h3>AI &amp; Data</h3></div>
+        <div class="skill-top"><span class="skill-ic">✦</span><h3>More Skills</h3></div>
         <div class="chips">
-          <span>LLM Apps</span><span>RAG</span><span>Agents</span><span>Vector DBs</span><span>Embeddings</span><span>LangChain</span><span>Pandas</span>
+          <span>Shopify</span><span>Java</span><span>Android Studio</span><span>Figma</span><span>N8N</span><span>LLM Apps</span><span>Agentic AI</span>
         </div>
       </div>
       <div class="skill-cat">
@@ -194,31 +203,31 @@ node   postgres  llm-apps  supabase</span>
     </div>
     <div class="projects">
       <article class="project">
-        <div class="project-img ph-1"><span class="proj-kicker">CASE STUDY</span></div>
+        <div class="project-img ph-1"><span class="proj-kicker">AI SOLUTIONS</span></div>
         <div class="project-meta">
-          <div><span class="proj-cat">AI · Search</span><h3>Agentic RAG Engine</h3></div>
+          <div><span class="proj-cat">AI · Agentic</span><h3>Agentic AI Solutions</h3><p class="proj-desc">Custom agentic AI & RAG systems built for companies — intelligent search, multi-agent orchestration, and LLM-powered automation.</p></div>
           <a href="#" class="proj-link" aria-label="Open">↗</a>
         </div>
       </article>
       <article class="project">
-        <div class="project-img ph-2"><span class="proj-kicker">WEB APP</span></div>
+        <div class="project-img ph-2"><span class="proj-kicker">WEBSITE</span></div>
         <div class="project-meta">
-          <div><span class="proj-cat">Full-Stack</span><h3>Finance Dashboard</h3></div>
-          <a href="#" class="proj-link" aria-label="Open">↗</a>
+          <div><span class="proj-cat">TypeScript · Full-Stack</span><h3>Kautilya PE</h3><p class="proj-desc">Corporate website for a private equity firm — built with TypeScript, clean design and fast performance.</p></div>
+          <a href="https://kautilya-pe.com" class="proj-link" aria-label="Open">↗</a>
         </div>
       </article>
       <article class="project">
         <div class="project-img ph-3"><span class="proj-kicker">MOBILE</span></div>
         <div class="project-meta">
-          <div><span class="proj-cat">Product</span><h3>Placeholder App</h3></div>
+          <div><span class="proj-cat">Mobile · EdTech</span><h3>MPSTME OnTrack</h3><p class="proj-desc">Mobile app for MPSTME students to track academics, attendance, and campus resources on the go.</p></div>
           <a href="#" class="proj-link" aria-label="Open">↗</a>
         </div>
       </article>
       <article class="project">
-        <div class="project-img ph-4"><span class="proj-kicker">SAAS</span></div>
+        <div class="project-img ph-4"><span class="proj-kicker">E-COMMERCE</span></div>
         <div class="project-meta">
-          <div><span class="proj-cat">Web</span><h3>Placeholder SaaS</h3></div>
-          <a href="#" class="proj-link" aria-label="Open">↗</a>
+          <div><span class="proj-cat">Shopify · E-Commerce</span><h3>MyCreativeCamp</h3><p class="proj-desc">Shopify-powered e-commerce platform for creative workshops, camps and educational experiences.</p></div>
+          <a href="https://mycreativecamp.com" class="proj-link" aria-label="Open">↗</a>
         </div>
       </article>
     </div>
@@ -281,22 +290,30 @@ node   postgres  llm-apps  supabase</span>
         <span class="tag">[ 07 ] // resume</span>
         <h2>The full story,<br>on one page.</h2>
         <p>Experience, education and the complete toolkit — grab the PDF or skim the highlights.</p>
-        <a href="#" class="btn" download>Download CV <span class="arrow">↓</span></a>
-        <span class="resume-upd">// last updated — [ month, year ]</span>
+        <a href="AdityaNegiCV.pdf" class="btn" download>Download CV <span class="arrow">↓</span></a>
+        <span class="resume-upd">// last updated — July 2026</span>
       </div>
       <div class="resume-right">
         <div class="exp">
           <div class="exp-row">
-            <span class="exp-yr">2024 — now</span>
-            <div><b>Founder / Full-Stack Dev</b><small>Pocket Fund · finance-tech &amp; AI</small></div>
+            <span class="exp-yr">2026 — now</span>
+            <div><b>Software Developer</b><small>Pocket Fund · finance-tech</small></div>
           </div>
           <div class="exp-row">
-            <span class="exp-yr">20XX — 2024</span>
-            <div><b>[ Role Title ]</b><small>[ Company ] · [ what you did ]</small></div>
+            <span class="exp-yr">Jan — May 2026</span>
+            <div><b>App Dev &amp; Orchestration Intern</b><small>Jio · mobile apps &amp; orchestration systems</small></div>
           </div>
           <div class="exp-row">
-            <span class="exp-yr">20XX</span>
-            <div><b>[ Role / Degree ]</b><small>[ Company / School ]</small></div>
+            <span class="exp-yr">May — Jul 2024</span>
+            <div><b>Full-Stack Intern</b><small>Jio Health · React, ES6 &amp; full-stack builds</small></div>
+          </div>
+          <div class="exp-row">
+            <span class="exp-yr">Aug 2023 — Jul 2024</span>
+            <div><b>App Developer</b><small>JPMorgan Chase &amp; Co · app maintenance &amp; Play Store</small></div>
+          </div>
+          <div class="exp-row">
+            <span class="exp-yr">2022 — 2026</span>
+            <div><b>B.Tech Computer Engineering</b><small>MPSTME, NMIMS University · Mumbai</small></div>
           </div>
         </div>
       </div>
@@ -307,9 +324,9 @@ node   postgres  llm-apps  supabase</span>
   <section class="contact reveal" id="contact">
     <span class="tag center">[ 08 ] // let's build</span>
     <h2>Got something<br>in mind?</h2>
-    <p>Whether it's a product, an AI feature, or a rough idea — let's make it real.</p>
-    <a href="#" class="btn btn-lg">Start a conversation <span class="arrow">↗</span></a>
-    <div class="contact-mail">[ your@email.com ]</div>
+    <p>Whether it's a website, an app, or a rough idea — let's make it real.</p>
+    <a href="mailto:adityanegi2206@gmail.com" class="btn btn-lg">Start a conversation <span class="arrow">↗</span></a>
+    <div class="contact-mail">adityanegi2206@gmail.com</div>
   </section>
 
 </main>
@@ -322,11 +339,11 @@ node   postgres  llm-apps  supabase</span>
   </div>
   <div class="foot-links">
     <div><span>Menu</span><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></div>
-    <div><span>Social</span><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">X</a></div>
+    <div><span>Social</span><a href="https://github.com/bmage95" target="_blank" rel="noopener">GitHub</a><a href="mailto:adityanegi2206@gmail.com">Email</a></div>
   </div>
   <div class="foot-bottom">
     <span>© 2026 Aditya Negi. All rights reserved.</span>
-    <span class="foot-status"><i></i> available for work</span>
+    <span class="foot-status"><i></i> open for freelance</span>
   </div>
 </footer>
 

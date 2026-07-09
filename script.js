@@ -6,7 +6,10 @@ const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 // ---------- mobile nav ----------
 const toggle = document.getElementById('navToggle');
 const links = document.getElementById('navLinks');
-toggle?.addEventListener('click', () => links.classList.toggle('open'));
+toggle?.addEventListener('click', () => {
+  links.classList.toggle('open');
+  toggle.classList.toggle('active');   // animate hamburger bars via CSS
+});
 links?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
 // ---------- reveal on scroll ----------
@@ -69,11 +72,11 @@ const SEG = [
   ['c-mute', '$ '], ['', 'whoami\n'],
   ['c-acc', 'aditya_negi\n'],
   ['c-mute', '$ '], ['', 'cat role.txt\n'],
-  ['c-txt', 'Full-stack dev · AI & RAG · Finance-tech\n'],
+  ['c-txt', 'Full-stack dev · Web & App · Freelance\n'],
   ['c-mute', '$ '], ['', 'ls ./skills\n'],
-  ['c-txt', 'react  next  typescript  python\nnode   postgres  llm-apps  supabase\n'],
+  ['c-txt', 'react  next  typescript  flutter\nnode   python  shopify  firebase\n'],
   ['c-mute', '$ '], ['', 'status --now\n'],
-  ['c-ok', '● available for work\n'],
+  ['c-ok', '● open for freelance\n'],
   ['c-mute', '$ '],
 ];
 function renderInstant() {
@@ -112,3 +115,120 @@ async function typeTerminal() {
 if (code) {
   reduce ? renderInstant() : typeTerminal();
 }
+
+// ---------- scroll progress bar ----------
+// Fills a `.scroll-progress` bar across the viewport top.
+(function () {
+  const bar = document.querySelector('.scroll-progress');
+  if (!bar) return;
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const scrollTop   = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      const pct = (scrollTop / (scrollHeight - clientHeight)) * 100;
+      bar.style.width = pct + '%';
+      ticking = false;
+    });
+  });
+})();
+
+// ---------- cursor glow effect ----------
+// A 400 × 400 `.cursor-glow` div follows the pointer (desktop only).
+if (!reduce && window.matchMedia('(pointer:fine)').matches) {
+  const glow = document.querySelector('.cursor-glow');
+  if (glow) {
+    document.addEventListener('mousemove', (e) => {
+      // Offset by half the element size (400/2 = 200) to centre on the cursor
+      glow.style.transform = `translate(${e.clientX - 200}px, ${e.clientY - 200}px)`;
+    });
+  }
+}
+
+// ---------- staggered hero load animation ----------
+// After a short delay, add `loaded` to `.hero` so CSS stagger kicks in.
+(function () {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  setTimeout(() => hero.classList.add('loaded'), 200);
+})();
+
+// ---------- nav hide / show on scroll ----------
+// Hides the header on scroll-down, reveals on scroll-up.
+(function () {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
+
+  nav.style.transition = 'transform 0.3s ease';
+
+  let lastY = window.scrollY;
+  let ticking = false;
+  const THRESHOLD = 5;       // px — ignore tiny deltas to prevent jitter
+
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const currY = window.scrollY;
+      const delta = currY - lastY;
+
+      if (currY < 100) {
+        // Always show nav near the top of the page
+        nav.classList.remove('nav-hidden');
+      } else if (delta > THRESHOLD) {
+        // Scrolling DOWN — hide nav
+        nav.classList.add('nav-hidden');
+      } else if (delta < -THRESHOLD) {
+        // Scrolling UP — show nav
+        nav.classList.remove('nav-hidden');
+      }
+
+      lastY = currY;
+      ticking = false;
+    });
+  });
+})();
+
+// ---------- smooth section parallax ----------
+// Subtle translateY on each `.section-head h2` while it's in view.
+(function () {
+  if (reduce) return;
+
+  const headings = document.querySelectorAll('.section-head h2');
+  if (!headings.length) return;
+
+  const MAX_SHIFT = 15;  // px — keep the effect subtle
+  const visibleSet = new Set();
+
+  // Only animate headings that are currently visible
+  const parallaxIO = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) visibleSet.add(entry.target);
+      else visibleSet.delete(entry.target);
+    });
+  }, { rootMargin: '50px 0px', threshold: 0 });
+
+  headings.forEach((h) => parallaxIO.observe(h));
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking || !visibleSet.size) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      visibleSet.forEach((h) => {
+        const rect   = h.getBoundingClientRect();
+        const centre = rect.top + rect.height / 2;
+        const viewH  = window.innerHeight;
+        // Normalised position: 0 at viewport centre, ±1 at edges
+        const ratio  = (centre - viewH / 2) / (viewH / 2);
+        const shift  = Math.max(-MAX_SHIFT, Math.min(MAX_SHIFT, ratio * MAX_SHIFT));
+        h.style.transform = `translateY(${shift}px)`;
+      });
+      ticking = false;
+    });
+  });
+})();
