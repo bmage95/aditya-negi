@@ -209,6 +209,7 @@ section{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
 .projects{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
 .project{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--panel);
   transition:transform .25s,border-color .25s;text-decoration:none;cursor:pointer;display:block;color:inherit;}
+.project-btn{appearance:none;-webkit-appearance:none;border:none;background:none;text-align:left;padding:0;font:inherit;width:100%;}
 .project:hover{transform:translateY(-6px);border-color:var(--border-2);}
 .project-img{aspect-ratio:16/10;position:relative;display:flex;align-items:flex-end;padding:18px;overflow:hidden;}
 .project-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(7,8,13,0.85),transparent 60%);opacity:0;transition:opacity 0.3s;pointer-events:none;}

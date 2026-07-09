@@ -17,6 +17,7 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="apple-touch-icon.png">
 <meta property="og:url" content="https://adityanegi.com/">
+<link rel="canonical" href="https://adityanegi.com/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Aditya Negi — Full-Stack Developer">
 <meta name="twitter:description" content="Portfolio of Aditya Negi, a full-stack developer in Mumbai. Specializing in React, Next.js, Flutter, Shopify, and AI applications.">
@@ -184,13 +185,13 @@ node   python  shopify  firebase</span>
       <h2>Explore my<br>top creations.</h2>
     </div>
     <div class="projects">
-      <a href="javascript:void(0);" onclick="openModal('ontrack-demo.mp4')" class="project">
+      <button type="button" onclick="openModal('ontrack-demo.mp4')" class="project project-btn">
         <div class="project-img ph-3"><span class="proj-kicker">MOBILE</span></div>
         <div class="project-meta">
           <div><span class="proj-cat">Mobile · EdTech</span><h3>MPSTME OnTrack</h3><p class="proj-desc">Mobile app for MPSTME students to track academics, attendance, and campus resources on the go.</p></div>
           <span class="proj-link" aria-label="Open">↗</span>
         </div>
-      </a>
+      </button>
       <a href="https://kautilya-pe.com" target="_blank" rel="noopener" class="project">
         <div class="project-img ph-2"><span class="proj-kicker">WEBSITE</span></div>
         <div class="project-meta">
@@ -315,7 +316,7 @@ node   python  shopify  firebase</span>
 <!-- ============ VIDEO MODAL ============ -->
 <div class="modal-overlay" id="vidModal" onclick="closeModal()">
   <div class="modal-content" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModal()">×</button>
+    <button class="modal-close" onclick="closeModal()" aria-label="Close modal">×</button>
     <video id="modalVideo" controls></video>
   </div>
 </div>
