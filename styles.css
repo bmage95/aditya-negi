@@ -148,7 +148,7 @@ section{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
 /* ---------- ticker ---------- */
 .ticker{border-top:1px solid var(--border);border-bottom:1px solid var(--border);
   overflow:hidden;margin-top:20px;background:var(--bg-2);}
-.ticker-track{display:flex;width:max-content;animation:scroll 26s linear infinite;}
+.ticker-track{display:flex;width:max-content;animation:scroll 45s linear infinite;}
 .ticker-content{display:flex;gap:26px;align-items:center;white-space:nowrap;
   font-family:var(--mono);font-size:15px;color:var(--muted);padding:16px 26px 16px 0;}
 .ticker-content span{color:var(--text);}
@@ -379,6 +379,9 @@ section{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
   .skill-grid{grid-template-columns:1fr;}
   .proc-flow{grid-template-columns:1fr;}
   .exp-row{flex-direction:column;gap:6px;}
+  .hero-left h1{font-size:46px;}
+  h2{font-size:32px;}
+  .hero-sub{font-size:16px;}
   /* tighter gutters + rhythm */
   section{padding:0 20px;}
   .nav{padding:16px 20px;}
