@@ -340,3 +340,19 @@ function closeModal() {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
+
+// ---------- load more projects ----------
+(() => {
+  const btn = document.getElementById('projMore');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.proj-row-more[hidden]').forEach((row, i) => {
+      row.hidden = false;
+      if (!reduce) {
+        row.classList.add('proj-row-in');
+        row.style.animationDelay = `${i * 90}ms`;
+      }
+    });
+    btn.remove();
+  });
+})();

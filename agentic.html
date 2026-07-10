@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentic Systems, a Case Study · Aditya Negi</title>
+<meta name="description" content="How I build and run agent systems for companies: report bots, chief-of-staff agents, outreach crews and SEO writers on plain Linux servers, talking over Telegram, WhatsApp and Slack.">
+<meta name="author" content="Aditya Negi">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#07080D">
+<meta property="og:title" content="Agentic Systems, a Case Study · Aditya Negi">
+<meta property="og:description" content="Report bots, chief-of-staff agents, outreach crews and SEO writers. Running on plain servers, talking over the chat apps teams already use.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="apple-touch-icon.png">
+<meta property="og:url" content="https://adityanegi.com/agentic.html">
+<link rel="canonical" href="https://adityanegi.com/agentic.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ---------- case study specifics ---------- */
+.cs-hero{max-width:var(--maxw);margin:0 auto;padding:170px 40px 40px;}
+.cs-hero h1{font-family:var(--display);font-weight:700;letter-spacing:-.03em;line-height:1.02;
+  font-size:clamp(40px,6.5vw,84px);margin:18px 0 22px;}
+.cs-hero .hero-sub{max-width:640px;}
+.cs-meta{display:flex;flex-wrap:wrap;gap:28px;margin-top:34px;font-family:var(--mono);font-size:12.5px;color:var(--muted);}
+.cs-meta b{display:block;color:var(--faint);font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px;}
+.cs{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
+.cs section{margin-top:110px;position:relative;}
+.cs p{color:var(--muted);font-size:16.5px;max-width:680px;margin-bottom:18px;}
+.cs p b{color:var(--text);font-weight:600;}
+.cs .hl{color:var(--accent);}
+.cs ul.flag-list{list-style:none;max-width:680px;margin:6px 0 18px;font-size:15.5px;color:var(--muted);}
+.cs ul.flag-list li{padding:9px 0 9px 24px;position:relative;border-bottom:1px dashed var(--border);}
+.cs ul.flag-list li::before{content:"▹";position:absolute;left:0;color:var(--accent);}
+
+/* pipeline diagram */
+.pipe{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:34px 0 10px;font-family:var(--mono);}
+.pipe-box{background:var(--panel);border:1px solid var(--border-2);border-radius:12px;padding:18px 20px;flex:1;min-width:190px;}
+.pipe-box b{display:block;font-size:13px;color:var(--text);font-weight:600;margin-bottom:6px;}
+.pipe-box span{font-size:12px;color:var(--muted);line-height:1.55;display:block;}
+.pipe-arrow{display:flex;align-items:center;padding:0 14px;color:var(--accent);font-size:18px;flex:none;}
+.pipe-note{font-family:var(--mono);font-size:12px;color:var(--faint);margin-top:14px;}
+@media(max-width:820px){
+  .pipe{flex-direction:column;}
+  .pipe-arrow{transform:rotate(90deg);padding:6px 0;justify-content:center;}
+}
+
+/* terminal run log */
+.runlog{background:var(--panel);border:1px solid var(--border-2);border-radius:14px;overflow:hidden;
+  max-width:680px;margin:30px 0 10px;box-shadow:0 24px 60px rgba(0,0,0,.4);}
+.runlog-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--border);background:var(--panel-2);}
+.runlog-bar i{width:11px;height:11px;border-radius:50%;background:var(--border-2);display:block;}
+.runlog-bar span{margin-left:8px;font-family:var(--mono);font-size:11.5px;color:var(--faint);}
+.runlog pre{padding:20px 22px;font-family:var(--mono);font-size:12.8px;line-height:1.75;color:var(--muted);overflow-x:auto;}
+.runlog .ok{color:var(--ok);}
+.runlog .warn{color:#E8B44C;}
+.runlog .crit{color:#F06A6A;}
+.runlog .dim{color:var(--faint);}
+
+/* chat mock */
+.chat{max-width:560px;background:var(--panel);border:1px solid var(--border-2);border-radius:14px;
+  padding:22px;margin:30px 0 10px;display:flex;flex-direction:column;gap:12px;box-shadow:0 24px 60px rgba(0,0,0,.4);}
+.chat-head{font-family:var(--mono);font-size:11.5px;color:var(--faint);letter-spacing:.12em;text-transform:uppercase;
+  padding-bottom:12px;border-bottom:1px solid var(--border);}
+.msg{max-width:88%;padding:11px 15px;border-radius:12px;font-size:14px;line-height:1.55;}
+.msg small{display:block;font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-bottom:4px;letter-spacing:.08em;}
+.msg.them{background:var(--panel-2);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px;color:var(--muted);}
+.msg.me{background:rgba(47,224,216,.09);border:1px solid rgba(47,224,216,.25);align-self:flex-end;border-bottom-right-radius:4px;color:var(--text);}
+.msg ol{margin:6px 0 4px 18px;color:var(--muted);}
+.msg ol li{padding:2px 0;}
+
+/* stack grid */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:34px;}
+.stack-cell{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;}
+.stack-cell b{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:500;}
+.stack-cell span{font-size:14px;color:var(--muted);line-height:1.6;}
+
+/* cta */
+.cs-cta{text-align:center;padding:40px 0 20px;}
+.cs-cta h2{font-family:var(--display);font-size:clamp(30px,4.5vw,52px);letter-spacing:-.02em;margin-bottom:14px;}
+.cs-cta p{margin:0 auto 28px;}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:26px;transition:color .2s;}
+.back-link:hover{color:var(--accent);}
+@media(max-width:700px){
+  .cs-hero{padding:140px 22px 20px;}
+  .cs{padding:0 22px;}
+  .cs section{margin-top:80px;}
+  .runlog pre{font-size:11px;padding:16px 14px;}
+  .chat{padding:16px;}
+  .msg{max-width:94%;}
+}
+</style>
+</head>
+<body>
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<!-- ============ BACKGROUND FX ============ -->
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <a href="index.html" class="logo">AN<span>//</span></a>
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html#about">About</a>
+    <a href="index.html#work">Work</a>
+    <a href="index.html#process">Process</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+  <a href="index.html#contact" class="btn btn-sm">Let's talk <span class="arrow">↗</span></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <div class="cs-hero">
+    <div class="eyebrow"><span class="blink">▍</span> cat work/agentic-systems.md</div>
+    <h1>Agents that<br><span class="h1-stroke">clock in</span> every night.</h1>
+    <p class="hero-sub">A case study on the agent systems I build and run for companies: report bots, chief-of-staff agents, outreach crews and SEO writers. All of it lives on plain Linux servers and talks over Telegram, WhatsApp and Slack.</p>
+    <div class="cs-meta">
+      <div><b>Role</b>Design, build, deploy, babysit</div>
+      <div><b>Clients</b>Furtados · Pocket Fund · Kautilya</div>
+      <div><b>Stack</b>OpenClaw / Hermes · Claude · VPS</div>
+      <div><b>Status</b>In production, running nightly</div>
+    </div>
+  </div>
+
+  <div class="cs">
+
+  <!-- ============ THE PATTERN ============ -->
+  <section class="reveal">
+    <div class="section-head">
+      <span class="ghost-n" aria-hidden="true">01</span>
+      <span class="tag">[ 01 ] // the pattern</span>
+      <h2>Same shape,<br>every time.</h2>
+    </div>
+    <p>Every build follows the same shape. The client gets their own VPS, usually a small Hetzner box that costs less than a pizza a month. On it runs an agent runtime, <b>OpenClaw</b> or <b>Hermes</b> depending on the job, wired to connectors for whatever the work touches: a mailbox, a CRM, a task tracker, an ad account.</p>
+    <p>The AI itself is <b>bring-your-own-key</b>. The client creates their own Claude account and the system runs on their API key. Their data goes through their account, billed to them, visible to them. I never sit in the middle of it, and there is no SaaS subscription to me or anyone else.</p>
+    <p>The interface is whatever chat app the team already lives in. No new dashboard, no login to forget. You message the bot the way you'd message a colleague.</p>
+    <div class="pipe" aria-label="System architecture">
+      <div class="pipe-box"><b>chat surface</b><span>Telegram, WhatsApp or Slack. The one the team already uses.</span></div>
+      <div class="pipe-arrow" aria-hidden="true">→</div>
+      <div class="pipe-box"><b>client's VPS</b><span>OpenClaw / Hermes runtime, cron jobs, audit log. Their box, their data.</span></div>
+      <div class="pipe-arrow" aria-hidden="true">→</div>
+      <div class="pipe-box"><b>their own AI key</b><span>Claude API on the client's account. Billed directly to them.</span></div>
+      <div class="pipe-arrow" aria-hidden="true">→</div>
+      <div class="pipe-box"><b>the actual work</b><span>Mailboxes, sheets, CRMs, ad accounts, task trackers.</span></div>
+    </div>
+    <p class="pipe-note">// one server per client. nothing shared, nothing pooled.</p>
+  </section>
+
+  <!-- ============ FURTADOS ============ -->
+  <section class="reveal">
+    <div class="section-head">
+      <span class="ghost-n" aria-hidden="true">02</span>
+      <span class="tag">[ 02 ] // furtados</span>
+      <h2>Twelve stores,<br>one email.</h2>
+    </div>
+    <p><b>Furtados</b> runs 12 stores across Mumbai. Every store emails a daily accounting report to one central mailbox, and until recently somebody had to open all 12, cross-check the figures by eye and decide what needed attention before close of day. Thirty to sixty minutes of copy-paste, every single evening.</p>
+    <p>Now a bot on <b>their own server</b> wakes up every evening, pulls the day's reports over IMAP, parses whatever format each store happened to send (Excel, CSV, PDF, the formats drift), consolidates everything into one master sheet and checks each line against rules the team can edit in a plain config file. No code changes needed to tune a threshold.</p>
+    <ul class="flag-list">
+      <li>Cash in drawer doesn't match the POS total? <span class="hl">CRITICAL</span>.</li>
+      <li>A store hasn't submitted by cutoff? An early alert fires so someone can chase them before the nightly run.</li>
+      <li>Revenue far below that store's own 7-day average, with no holiday on record? Flagged.</li>
+      <li>Refund ratio creeping up, an expense line jumping, totals that don't add up? All flagged, each with its own severity.</li>
+    </ul>
+    <p>One email lands in the manager's inbox. The subject line shows the flag count at a glance, flags are pasted inline, the master sheet is attached, and a recap section tracks whether yesterday's criticals were actually resolved or just ignored. The bot runs in under two minutes and exits.</p>
+    <div class="runlog" role="img" aria-label="Illustration of the nightly bot run log">
+      <div class="runlog-bar"><i></i><i></i><i></i><span>daily_intel · cron · 21:30 IST</span></div>
+      <pre><span class="dim">$ run daily_intel --date today</span>
+<span class="ok">✓</span> mailbox check .......... 12/12 reports in
+<span class="ok">✓</span> parse + normalise ...... xlsx ×9 · csv ×2 · pdf ×1
+<span class="ok">✓</span> consolidate ............ master sheet built
+<span class="warn">⚠</span> flags .................. 2 WARNING · 1 CRITICAL
+  <span class="crit">› store 07 · cash vs POS mismatch      CRITICAL</span>
+  <span class="warn">› store 03 · refund ratio above limit  WARNING</span>
+  <span class="warn">› store 11 · petty cash over cap       WARNING</span>
+<span class="ok">✓</span> report sent ............ 1 email · run took 41s</pre>
+    </div>
+    <p class="pipe-note">// illustrative run. real store data stays on the client's server.</p>
+  </section>
+
+  <!-- ============ POCKET FUND ============ -->
+  <section class="reveal">
+    <div class="section-head">
+      <span class="ghost-n" aria-hidden="true">03</span>
+      <span class="tag">[ 03 ] // pocket fund</span>
+      <h2>A chief of staff<br>that lives in Slack.</h2>
+    </div>
+    <p><b>Pocket Fund</b> is a micro private equity firm I work with, and their setup has grown into a small crew of agents, each with exactly one job.</p>
+    <p>The chief-of-staff pair, <b>Cyndra</b> and <b>Nanoclaw</b>, sit in Slack. Meeting transcripts get dropped into a channel and the agents classify them, pull out decisions and action items, and suggest tasks. Nothing enters the task tracker without a human tapping approve. Once approved, the task gets filed, assigned and chased.</p>
+    <div class="chat" role="img" aria-label="Illustration of the chief-of-staff agent conversation">
+      <div class="chat-head">#ops · cyndra</div>
+      <div class="msg me"><small>founder · 10:42</small>transcript from this morning's standup 📎 standup_0710.md</div>
+      <div class="msg them"><small>cyndra · 10:43</small>read it. 14 items, 3 look like tasks:
+        <ol>
+          <li>follow up with the Canada prospect (analyst)</li>
+          <li>fix the DD checklist template (finance ops)</li>
+          <li>move the Reddit report to Fridays (research)</li>
+        </ol>approve all, or pick?</div>
+      <div class="msg me"><small>founder · 10:44</small>approve 1 and 3</div>
+      <div class="msg them"><small>cyndra · 10:44</small>done. filed to the tracker, owners pinged. #2 parked in suggestions.</div>
+    </div>
+    <p style="margin-top:24px;">The content agents handle the newsletter and the blog. They research with Google Trends and keyword data, suggest topics people are actually searching for, draft the articles and push them to Beehiiv for review. Nobody publishes anything a human hasn't read.</p>
+    <p>The ads agent builds Meta campaigns. Someone sends the creative over Telegram, a video or a few images, tells the bot the budget and audience, and the campaign gets set up from chat.</p>
+  </section>
+
+  <!-- ============ KAUTILYA ============ -->
+  <section class="reveal">
+    <div class="section-head">
+      <span class="ghost-n" aria-hidden="true">04</span>
+      <span class="tag">[ 04 ] // kautilya</span>
+      <h2>An org chart<br>made of agents.</h2>
+    </div>
+    <p><b>Kautilya</b> runs an ambassador programme for chartered accountants, which means outreach to a database of thousands of CAs across India. Too many for a person, too nuanced for a mail-merge.</p>
+    <p>The system is run by an orchestrator agent named <b>Chanakya</b>. Chank, to the team. Chanakya doesn't send anything itself. It delegates: a strategist agent decides who to contact and when, writers draft the emails, senders dispatch them in controlled batches, and a tracker watches what happens next. Opens and clicks land in a <b>Convex</b> database. When someone replies with genuine interest, the system reads the thread and drafts a response for a human to send.</p>
+    <p>It is a management hierarchy, except the middle managers cost a few rupees a day and never forget to follow up.</p>
+  </section>
+
+  <!-- ============ SMALLER BUILDS ============ -->
+  <section class="reveal">
+    <div class="section-head">
+      <span class="ghost-n" aria-hidden="true">05</span>
+      <span class="tag">[ 05 ] // smaller builds</span>
+      <h2>Personal bots<br>&amp; odd jobs.</h2>
+    </div>
+    <p>Not everything is a company system. <b>Jade</b> is a research-and-outreach agent in the works for store events: it finds artists and authors worth contacting, builds the shortlist and then works LinkedIn and email. I've also built personal assistant bots that run calendars and notes over Telegram, and <b>SEO bots</b> that watch keyword movements and turn them into content briefs.</p>
+    <p>Most of these start the same way: someone describes a chore they're sick of, and a couple of weeks later there's a bot quietly doing it.</p>
+    <div class="stack-grid">
+      <div class="stack-cell"><b>runtime</b><span>OpenClaw / Hermes on an Ubuntu VPS. Cron for schedules, SQLite for audit logs. One box per client.</span></div>
+      <div class="stack-cell"><b>memory</b><span>Markdown context packs describing the team, preferences and rules. The agent reads them on every session and treats them as ground truth. When reality disagrees, it flags the difference instead of silently overwriting.</span></div>
+      <div class="stack-cell"><b>surfaces</b><span>Telegram, WhatsApp, Slack and plain email. Meet people where they already are.</span></div>
+      <div class="stack-cell"><b>guardrails</b><span>Bring-your-own-key, so data stays on the client's account. And a human approves anything that leaves the building: emails, posts, tasks, campaigns.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cs-cta reveal">
+    <span class="tag center">[ 06 ] // your turn</span>
+    <h2>Got a chore worth killing?</h2>
+    <p>Tell me what eats your team's evenings. There's probably a bot for that, and if there isn't, I'll build it.</p>
+    <a href="https://wa.me/919811403774" target="_blank" rel="noopener" class="btn btn-lg">Start a conversation <span class="arrow">↗</span></a>
+    <br>
+    <a href="index.html#work" class="back-link">← back to all work</a>
+  </section>
+
+  </div>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="foot-left">
+    <a href="index.html" class="logo">AN<span>//</span></a>
+    <p>Full-stack developer building fast, thoughtful software.</p>
+  </div>
+  <div class="foot-links">
+    <div><span>Menu</span><a href="index.html#work">Work</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></div>
+    <div><span>Social</span><a href="https://github.com/bmage95" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/aditya-negi-9a12a2223/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:adityanegi2206@gmail.com">Email</a><a href="https://wa.me/919811403774" target="_blank" rel="noopener">WhatsApp</a></div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Aditya Negi. All rights reserved.</span>
+    <span class="foot-status"><i></i> open for freelance</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
