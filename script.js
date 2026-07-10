@@ -26,6 +26,30 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     setTimeout(() => window.isAutoScrolling = false, 1200);
   });
 });
+// ---------- per-word heading reveal ----------
+// Splits section h2s into overflow-hidden word spans; `.reveal.in` (below) triggers
+// the staggered rise. Skipped entirely under reduced motion — headings just show.
+(function () {
+  if (reduce) return;
+  document.querySelectorAll('.section-head h2, .resume-left h2').forEach((h) => {
+    let i = 0;
+    [...h.childNodes].forEach((n) => {
+      if (n.nodeType !== 3 || !n.textContent.trim()) return;   // keep <br> etc.
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach((part) => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        const w = document.createElement('span'); w.className = 'w';
+        const wi = document.createElement('span'); wi.className = 'wi';
+        wi.style.setProperty('--wi', i++);
+        wi.textContent = part;
+        w.appendChild(wi); frag.appendChild(w);
+      });
+      n.replaceWith(frag);
+    });
+  });
+})();
+
 // ---------- reveal on scroll ----------
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -151,18 +175,6 @@ if (code) {
   });
 })();
 
-// ---------- cursor glow effect ----------
-// A 400 × 400 `.cursor-glow` div follows the pointer (desktop only).
-if (!reduce && window.matchMedia('(pointer:fine)').matches) {
-  const glow = document.querySelector('.cursor-glow');
-  if (glow) {
-    document.addEventListener('mousemove', (e) => {
-      // Offset by half the element size (400/2 = 200) to centre on the cursor
-      glow.style.transform = `translate(${e.clientX - 200}px, ${e.clientY - 200}px)`;
-    });
-  }
-}
-
 // ---------- staggered hero load animation ----------
 // After a short delay, add `loaded` to `.hero` so CSS stagger kicks in.
 (function () {
@@ -243,6 +255,66 @@ if (!reduce && window.matchMedia('(pointer:fine)').matches) {
         h.style.transform = `translateY(${shift}px)`;
       });
       ticking = false;
+    });
+  });
+})();
+
+// ---------- cursor-following project preview ----------
+// A fixed 320×200 image card trails the pointer over `.proj-row` (desktop only).
+(function () {
+  if (!window.matchMedia('(pointer:fine)').matches) return;
+  const prev = document.querySelector('.proj-preview');
+  const img = prev?.querySelector('img');
+  if (!prev || !img) return;
+
+  const ease = reduce ? 1 : 0.16;         // reduced motion → snap, no trailing
+  let tx = 0, ty = 0, x = 0, y = 0, raf = null, hovering = false;
+
+  const place = () => { prev.style.transform = `translate(${x + 22}px, ${y - 100}px)`; };
+  const loop = () => {
+    x += (tx - x) * ease; y += (ty - y) * ease;
+    place();
+    if (hovering || Math.abs(tx - x) > 0.5 || Math.abs(ty - y) > 0.5) raf = requestAnimationFrame(loop);
+    else raf = null;
+  };
+
+  document.querySelectorAll('.proj-row').forEach((row) => {
+    row.addEventListener('mouseenter', (e) => {
+      const src = row.dataset.preview;
+      if (!src) return;
+      img.src = src;
+      hovering = true;
+      tx = x = e.clientX; ty = y = e.clientY;
+      place();
+      prev.classList.add('on');
+      if (!raf) raf = requestAnimationFrame(loop);
+    });
+    row.addEventListener('mousemove', (e) => {
+      tx = e.clientX; ty = e.clientY;
+      if (!raf) raf = requestAnimationFrame(loop);
+    });
+    row.addEventListener('mouseleave', () => {
+      hovering = false;
+      prev.classList.remove('on');
+    });
+  });
+})();
+
+// ---------- magnetic buttons ----------
+// `.btn-lg` and `.proj-link` arrows lean toward the cursor, spring back on leave.
+(function () {
+  if (reduce || !window.matchMedia('(pointer:fine)').matches) return;
+  document.querySelectorAll('.btn-lg, .proj-link').forEach((el) => {
+    el.addEventListener('mousemove', (e) => {
+      const r = el.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2);
+      const dy = e.clientY - (r.top + r.height / 2);
+      el.style.transition = 'transform .1s ease-out';
+      el.style.transform = `translate(${dx * 0.28}px, ${dy * 0.28}px)`;
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transition = 'transform .45s cubic-bezier(.16,1,.3,1)';
+      el.style.transform = '';
     });
   });
 })();

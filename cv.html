@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Negi — CV</title>
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:  #0FA9A2;
+      --dark:    #1a1a2e;
+      --mid:     #3d3d5c;
+      --muted:   #6b7280;
+      --light:   #f4f7f7;
+      --border:  #d1e8e7;
+      --text:    #1f2937;
+    }
+
+    html, body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.45;
+      color: var(--text);
+      background: #fff;
+      width: 210mm;
+      margin: 0 auto;
+    }
+
+    /* ── Print page setup ── */
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    @media print {
+      html, body {
+        width: 210mm;
+        height: 297mm;
+      }
+    }
+
+    /* ── Layout wrapper ── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 62mm 1fr;
+      background: #fff;
+    }
+
+    /* ══ LEFT SIDEBAR ══ */
+    .sidebar {
+      background: #f8fdfd;
+      border-right: 2px solid var(--border);
+      padding: 10mm 5mm 8mm 7mm;
+      display: flex;
+      flex-direction: column;
+      gap: 5.5mm;
+    }
+
+    .name-block {
+      padding-bottom: 4mm;
+      border-bottom: 2px solid var(--accent);
+    }
+    .name-block h1 {
+      font-size: 15pt;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.3px;
+      line-height: 1.15;
+    }
+    .name-block .role {
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 1.5mm;
+    }
+    .name-block .location {
+      font-size: 8pt;
+      color: var(--muted);
+      margin-top: 1mm;
+    }
+
+    /* Contact */
+    .sb-section h2 {
+      font-size: 6.5pt;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 2mm;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8mm;
+    }
+    .contact-list li {
+      font-size: 7.5pt;
+      color: var(--mid);
+      word-break: break-all;
+      display: flex;
+      align-items: flex-start;
+      gap: 2mm;
+    }
+    .contact-list li .icon {
+      color: var(--accent);
+      font-size: 8pt;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+    .contact-list a {
+      color: var(--mid);
+      text-decoration: none;
+    }
+
+    /* Skills */
+    .skill-group {
+      margin-bottom: 2.5mm;
+    }
+    .skill-group .label {
+      font-size: 7pt;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1mm;
+    }
+    .skill-group .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2mm;
+    }
+    .tag {
+      background: #e0f5f4;
+      color: var(--accent);
+      font-size: 6.8pt;
+      font-weight: 600;
+      padding: 0.7mm 2mm;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    /* Education sidebar */
+    .edu-item {
+      margin-bottom: 2.5mm;
+    }
+    .edu-item .school {
+      font-size: 7.5pt;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+    .edu-item .degree {
+      font-size: 7pt;
+      color: var(--mid);
+      line-height: 1.3;
+    }
+    .edu-item .year {
+      font-size: 6.5pt;
+      color: var(--muted);
+    }
+
+    /* Achievements sidebar */
+    .ach-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5mm;
+    }
+    .ach-list li {
+      font-size: 7.5pt;
+      color: var(--mid);
+      padding-left: 3.5mm;
+      position: relative;
+      line-height: 1.35;
+    }
+    .ach-list li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 7pt;
+    }
+
+    /* ══ RIGHT MAIN ══ */
+    .main {
+      padding: 10mm 8mm 8mm 8mm;
+      display: flex;
+      flex-direction: column;
+      gap: 5mm;
+    }
+
+    /* Summary */
+    .summary {
+      padding: 3mm 4mm;
+      background: #f0fbfa;
+      border-left: 3px solid var(--accent);
+      border-radius: 0 3px 3px 0;
+    }
+    .summary p {
+      font-size: 8.5pt;
+      color: var(--mid);
+      line-height: 1.5;
+    }
+
+    /* Section headings */
+    .section-title {
+      font-size: 8pt;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      border-bottom: 1.5px solid var(--border);
+      padding-bottom: 1.5mm;
+      margin-bottom: 3mm;
+    }
+
+    /* Experience */
+    .exp-item {
+      margin-bottom: 3mm;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 2mm;
+    }
+    .exp-title {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .exp-date {
+      font-size: 7pt;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .exp-company {
+      font-size: 7.8pt;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 0.3mm;
+    }
+    .exp-desc {
+      font-size: 7.8pt;
+      color: var(--mid);
+      margin-top: 1mm;
+      line-height: 1.4;
+    }
+
+    /* Projects */
+    .proj-item {
+      margin-bottom: 2.5mm;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 3mm;
+    }
+    .proj-name {
+      font-size: 8.2pt;
+      font-weight: 700;
+      color: var(--dark);
+      white-space: nowrap;
+    }
+    .proj-url {
+      font-size: 7pt;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .proj-desc {
+      font-size: 7.8pt;
+      color: var(--mid);
+      line-height: 1.4;
+      grid-column: 1 / -1;
+      margin-top: 0.5mm;
+    }
+
+    .divider {
+      height: 1.5px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* DOB line */
+    .dob {
+      font-size: 7.5pt;
+      color: var(--muted);
+      margin-top: 1mm;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="sidebar">
+
+      <!-- Name block -->
+      <div class="name-block">
+        <h1>Aditya<br>Negi</h1>
+        <div class="role">Full-Stack Developer</div>
+        <div class="location">Mumbai, India</div>
+        <div class="dob">DOB: 22 Jan 2004 · 22 yrs</div>
+      </div>
+
+      <!-- Contact -->
+      <div class="sb-section">
+        <h2>Contact</h2>
+        <ul class="contact-list">
+          <li><span class="icon">✉</span><a href="mailto:adityanegi2206@gmail.com">adityanegi2206<br>@gmail.com</a></li>
+          <li><span class="icon">✆</span>+91 9811403774</li>
+          <li><span class="icon">⬡</span><a href="https://adityanegi.com">adityanegi.com</a></li>
+          <li><span class="icon">⌥</span><a href="https://github.com/bmage95">github.com/bmage95</a></li>
+          <li><span class="icon">in</span><a href="https://linkedin.com/in/aditya-negi-9a12a2223">linkedin.com/in/<br>aditya-negi-9a12a2223</a></li>
+        </ul>
+      </div>
+
+      <!-- Skills -->
+      <div class="sb-section">
+        <h2>Skills</h2>
+        <div class="skill-group">
+          <div class="label">Languages</div>
+          <div class="tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Python</span>
+            <span class="tag">Dart</span>
+            <span class="tag">Java</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="label">Frontend</div>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">Flutter</span>
+            <span class="tag">Tailwind</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="label">Backend &amp; Data</div>
+          <div class="tags">
+            <span class="tag">Node/Express</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">MongoDB</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="label">AI / Agentic</div>
+          <div class="tags">
+            <span class="tag">LLM Integration</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Multi-agent</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="label">Commerce &amp; Tools</div>
+          <div class="tags">
+            <span class="tag">Shopify</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">Android Studio</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="sb-section">
+        <h2>Education</h2>
+        <div class="edu-item">
+          <div class="school">MPSTME, NMIMS University</div>
+          <div class="degree">B.Tech Computer Engineering</div>
+          <div class="year">2022 – 2026 · Mumbai</div>
+        </div>
+        <div class="edu-item">
+          <div class="school">Podar International School</div>
+          <div class="degree">A-Levels · 70%</div>
+          <div class="year">2020 – 2022</div>
+        </div>
+        <div class="edu-item">
+          <div class="school">Ryan International School</div>
+          <div class="degree">IGCSE · 80%</div>
+          <div class="year">2020</div>
+        </div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="sb-section">
+        <h2>Achievements &amp; Leadership</h2>
+        <ul class="ach-list">
+          <li>Winner — NMTechFiesta Project Expo, Hyderabad (2025)</li>
+          <li>Top-15 — GDG Mumbai 18-hr AI Hackathon (2025)</li>
+          <li>Sub-Head, App Dev — GDSC MPSTME (2023–24)</li>
+          <li>Head Boy — Podar International Nerul (2021–22)</li>
+          <li>Guitarist — campus &amp; regional performances, 3+ yrs</li>
+        </ul>
+      </div>
+
+    </aside>
+
+    <!-- ══ MAIN ══ -->
+    <main class="main">
+
+      <!-- Summary -->
+      <div class="summary">
+        <p>22-year-old full-stack developer building web &amp; mobile products — from corporate sites and Shopify stores to agentic AI/RAG systems. Currently Software Developer at Pocket Fund; open to freelance opportunities.</p>
+      </div>
+
+      <!-- Experience -->
+      <div class="section">
+        <div class="section-title">Experience</div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-title">Software Developer</span>
+            <span class="exp-date">2026 – Present</span>
+          </div>
+          <div class="exp-company">Pocket Fund &mdash; Finance-tech</div>
+          <div class="exp-desc">Building finance-tech products; agentic search &amp; RAG systems for private-equity and deal workflows.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-title">App Development &amp; Orchestration Intern</span>
+            <span class="exp-date">Jan – May 2026</span>
+          </div>
+          <div class="exp-company">Jio</div>
+          <div class="exp-desc">Mobile app development and orchestration systems.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-title">Full-Stack Intern</span>
+            <span class="exp-date">May – Jul 2024</span>
+          </div>
+          <div class="exp-company">Jio Health</div>
+          <div class="exp-desc">Full-stack project delivery using React &amp; ES6 within a professional product team.</div>
+        </div>
+
+        <div class="exp-item" style="margin-bottom:0">
+          <div class="exp-header">
+            <span class="exp-title">App Developer Intern</span>
+            <span class="exp-date">Aug 2023 – Jul 2024</span>
+          </div>
+          <div class="exp-company">JPMorgan Chase &amp; Co</div>
+          <div class="exp-desc">Feature development &amp; maintenance of <em>Team Vision</em> — an audio-library app for the visually challenged; live on Play Store.</div>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div class="section">
+        <div class="section-title">Selected Projects &amp; Freelance</div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-title">Kautilya PE <span style="font-weight:400;color:var(--accent);font-size:7pt;">kautilya-pe.com</span></span>
+          </div>
+          <div class="exp-desc">Corporate website for a private equity firm; TypeScript, full-stack.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-title">MyCreativeCamp <span style="font-weight:400;color:var(--accent);font-size:7pt;">mycreativecamp.com</span></span>
+          </div>
+          <div class="exp-desc">Shopify e-commerce platform for creative workshops &amp; camps, incl. wholesale/B2B setup.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-title">MPSTME OnTrack</span>
+            <span class="exp-date">GDSC 2023–24</span>
+          </div>
+          <div class="exp-desc">Cross-platform Flutter campus app with interactive floorplans &amp; navigation — live on App Store &amp; Play Store.</div>
+        </div>
+
+        <div class="exp-item" style="margin-bottom:0">
+          <div class="exp-header">
+            <span class="exp-title">Agentic AI Systems</span>
+          </div>
+          <div class="exp-desc">Custom agentic AI &amp; RAG builds for companies: intelligent search, multi-agent orchestration, LLM automation. Top-15 at GDG Mumbai 18-hr hackathon (n8n workflow generation from prompts, 2025).</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</body>
+</html>

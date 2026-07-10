@@ -24,18 +24,15 @@
 <meta name="twitter:image" content="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="scroll-progress" aria-hidden="true"></div>
-<div class="cursor-glow" aria-hidden="true"></div>
 
 <!-- ============ BACKGROUND FX ============ -->
 <div class="bg-grid" aria-hidden="true"></div>
-<div class="bg-glow bg-glow-1" aria-hidden="true"></div>
-<div class="bg-glow bg-glow-2" aria-hidden="true"></div>
-<div class="scanlines" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
 
 <!-- ============ NAV ============ -->
 <header class="nav">
@@ -56,7 +53,7 @@
   <section class="hero">
     <div class="hero-left">
       <div class="eyebrow"><span class="blink">▍</span> initializing_portfolio.exe</div>
-      <h1>Full-Stack<br><span class="accent">Developer</span><br>&amp; Builder<span class="plus">+</span></h1>
+      <h1><span class="h1-line">Full-Stack</span><br><span class="h1-line h1-stroke">Developer</span><br><span class="h1-line">&amp; Builder<span class="plus">+</span></span></h1>
       <p class="hero-sub">Hi, I'm <b>Aditya Negi</b> — I build fast, thoughtful web &amp; mobile apps.
         From <span class="hl">corporate websites &amp; Shopify stores</span> to <span class="hl">cross-platform apps</span>, I turn ideas into things people actually use.</p>
       <div class="hero-cta">
@@ -120,7 +117,9 @@ node   python  shopify  firebase</span>
 
   <!-- ============ ABOUT ============ -->
   <section class="about reveal" id="about">
+    <span class="side-label" aria-hidden="true">about</span>
     <div class="section-head">
+      <span class="ghost-n" aria-hidden="true">01</span>
       <span class="tag">[ 01 ] // about</span>
       <h2>Builder at heart,<br>engineer by craft.</h2>
     </div>
@@ -130,7 +129,7 @@ node   python  shopify  firebase</span>
         <div class="photo-tag">aditya.jpg</div>
       </div>
       <div class="about-text">
-        <p>I'm a full-stack developer from Mumbai who loves building products people actually use. From
+        <p>I'm a 22-year-old full-stack developer from Mumbai who loves building products people actually use. From
         cross-platform mobile apps and corporate websites to Shopify stores and
         finance-tech platforms — I focus on shipping clean, fast software that solves real problems.</p>
         <p>I interned at <b class="hl">Jio</b> working on app development &amp; orchestration systems, built apps with
@@ -148,7 +147,9 @@ node   python  shopify  firebase</span>
 
   <!-- ============ SERVICES ============ -->
   <section class="services reveal" id="services">
+    <span class="side-label" aria-hidden="true">services</span>
     <div class="section-head">
+      <span class="ghost-n" aria-hidden="true">02</span>
       <span class="tag">[ 02 ] // what i do</span>
       <h2>All-kinds-of-code<br>solutions.</h2>
     </div>
@@ -180,45 +181,68 @@ node   python  shopify  firebase</span>
 
   <!-- ============ WORK ============ -->
   <section class="work reveal" id="work">
+    <span class="side-label" aria-hidden="true">work</span>
     <div class="section-head">
+      <span class="ghost-n" aria-hidden="true">03</span>
       <span class="tag">[ 03 ] // selected work</span>
       <h2>Explore my<br>top creations.</h2>
     </div>
-    <div class="projects">
-      <button type="button" onclick="openModal('ontrack-demo.mp4')" class="project project-btn">
-        <div class="project-img ph-3"><span class="proj-kicker">MOBILE</span></div>
-        <div class="project-meta">
-          <div><span class="proj-cat">Mobile · EdTech</span><h3>MPSTME OnTrack</h3><p class="proj-desc">Mobile app for MPSTME students to track academics, attendance, and campus resources on the go.</p></div>
-          <span class="proj-link" aria-label="Open">↗</span>
+    <div class="proj-list">
+      <button type="button" onclick="openModal('ontrack-demo.mp4')" class="proj-row" data-preview="ontrack.jpg">
+        <img class="proj-row-thumb" src="ontrack.jpg" alt="" loading="lazy">
+        <span class="proj-row-idx" aria-hidden="true">01</span>
+        <div class="proj-row-main">
+          <h3>MPSTME OnTrack</h3>
+          <p class="proj-row-desc">Mobile app for MPSTME students to track academics, attendance, and campus resources on the go.</p>
         </div>
+        <div class="proj-row-tags"><span>Mobile</span><span>EdTech</span></div>
+        <span class="proj-row-type">MOBILE APP</span>
+        <span class="proj-link" aria-hidden="true">↗</span>
       </button>
-      <a href="https://kautilya-pe.com" target="_blank" rel="noopener" class="project">
-        <div class="project-img ph-2"><span class="proj-kicker">WEBSITE</span></div>
-        <div class="project-meta">
-          <div><span class="proj-cat">TypeScript · Full-Stack</span><h3>Kautilya PE</h3><p class="proj-desc">Corporate website for a private equity firm — built with TypeScript, clean design and fast performance.</p></div>
-          <span class="proj-link" aria-label="Open">↗</span>
+      <a href="https://kautilya-pe.com" target="_blank" rel="noopener" class="proj-row" data-preview="kautilya.jpg">
+        <img class="proj-row-thumb" src="kautilya.jpg" alt="" loading="lazy">
+        <span class="proj-row-idx" aria-hidden="true">02</span>
+        <div class="proj-row-main">
+          <h3>Kautilya PE</h3>
+          <p class="proj-row-desc">Corporate website for a private equity firm — built with TypeScript, clean design and fast performance.</p>
         </div>
+        <div class="proj-row-tags"><span>TypeScript</span><span>Full-Stack</span></div>
+        <span class="proj-row-type">WEBSITE</span>
+        <span class="proj-link" aria-hidden="true">↗</span>
       </a>
-      <a href="https://mycreativecamp.com" target="_blank" rel="noopener" class="project">
-        <div class="project-img ph-4"><span class="proj-kicker">E-COMMERCE</span></div>
-        <div class="project-meta">
-          <div><span class="proj-cat">Shopify · E-Commerce</span><h3>MyCreativeCamp</h3><p class="proj-desc">Shopify-powered e-commerce platform for creative workshops, camps and educational experiences.</p></div>
-          <span class="proj-link" aria-label="Open">↗</span>
+      <a href="https://mycreativecamp.com" target="_blank" rel="noopener" class="proj-row" data-preview="mcc.jpg">
+        <img class="proj-row-thumb" src="mcc.jpg" alt="" loading="lazy">
+        <span class="proj-row-idx" aria-hidden="true">03</span>
+        <div class="proj-row-main">
+          <h3>MyCreativeCamp</h3>
+          <p class="proj-row-desc">Shopify-powered e-commerce platform for creative workshops, camps and educational experiences.</p>
         </div>
+        <div class="proj-row-tags"><span>Shopify</span><span>E-Commerce</span></div>
+        <span class="proj-row-type">E-COMMERCE</span>
+        <span class="proj-link" aria-hidden="true">↗</span>
       </a>
-      <div class="project">
-        <div class="project-img ph-1"><span class="proj-kicker">AI SOLUTIONS</span></div>
-        <div class="project-meta">
-          <div><span class="proj-cat">AI · Agentic</span><h3>Agentic AI Solutions</h3><p class="proj-desc">Custom agentic AI & RAG systems built for companies — intelligent search, multi-agent orchestration, and LLM-powered automation.</p></div>
-          <span class="proj-link" aria-label="Open">↗</span>
+      <a href="#contact" class="proj-row" data-preview="ai_project.jpg">
+        <img class="proj-row-thumb" src="ai_project.jpg" alt="" loading="lazy">
+        <span class="proj-row-idx" aria-hidden="true">04</span>
+        <div class="proj-row-main">
+          <h3>Agentic AI Solutions</h3>
+          <p class="proj-row-desc">Custom agentic AI &amp; RAG systems built for companies — intelligent search, multi-agent orchestration, and LLM-powered automation.</p>
         </div>
-      </div>
+        <div class="proj-row-tags"><span>AI</span><span>Agentic</span></div>
+        <span class="proj-row-type">AI SOLUTIONS</span>
+        <span class="proj-link" aria-hidden="true">↗</span>
+      </a>
     </div>
   </section>
 
+  <!-- cursor-following project preview (pointer:fine only) -->
+  <div class="proj-preview" aria-hidden="true"><img alt=""></div>
+
   <!-- ============ PROCESS ============ -->
   <section class="process reveal" id="process">
+    <span class="side-label" aria-hidden="true">process</span>
     <div class="section-head">
+      <span class="ghost-n" aria-hidden="true">04</span>
       <span class="tag">[ 04 ] // how i work</span>
       <h2>From idea<br>to shipped.</h2>
     </div>
@@ -248,8 +272,10 @@ node   python  shopify  firebase</span>
 
   <!-- ============ RESUME ============ -->
   <section class="resume reveal" id="resume">
+    <span class="side-label" aria-hidden="true">resume</span>
     <div class="resume-inner">
       <div class="resume-left">
+        <span class="ghost-n" aria-hidden="true">05</span>
         <span class="tag">[ 05 ] // resume</span>
         <h2>The full story,<br>on one page.</h2>
         <p>Experience, education and the complete toolkit — grab the PDF or skim the highlights.</p>
@@ -285,8 +311,9 @@ node   python  shopify  firebase</span>
 
   <!-- ============ CONTACT ============ -->
   <section class="contact reveal" id="contact">
+    <span class="side-label" aria-hidden="true">contact</span>
     <span class="tag center">[ 06 ] // let's build</span>
-    <h2>Got something<br>in mind?</h2>
+    <h2 class="contact-giant"><span class="cg-line"><span class="cg-in">Let's build</span></span><span class="cg-line cg-stroke"><span class="cg-in">something</span></span></h2>
     <p>Whether it's a website, an app, or a rough idea — let's make it real.</p>
     <a href="https://wa.me/919811403774" target="_blank" rel="noopener" class="btn btn-lg">Start a conversation <span class="arrow">↗</span></a>
     <div class="contact-links-wrap">
@@ -294,6 +321,14 @@ node   python  shopify  firebase</span>
       <a href="https://wa.me/919811403774" target="_blank" rel="noopener" class="contact-link-anim">+91 9811403774 <span class="c-mute">(Call / WhatsApp)</span></a>
     </div>
   </section>
+
+  <!-- ============ CLOSING MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-chunk">AVAILABLE FOR FREELANCE <i>·</i> MUMBAI <i>·</i> FULL-STACK <i>·</i> AI <i>·</i> AVAILABLE FOR FREELANCE <i>·</i> MUMBAI <i>·</i> FULL-STACK <i>·</i> AI <i>·</i> AVAILABLE FOR FREELANCE <i>·</i> MUMBAI <i>·</i> FULL-STACK <i>·</i> AI <i>·</i>&nbsp;</span>
+      <span class="marquee-chunk">AVAILABLE FOR FREELANCE <i>·</i> MUMBAI <i>·</i> FULL-STACK <i>·</i> AI <i>·</i> AVAILABLE FOR FREELANCE <i>·</i> MUMBAI <i>·</i> FULL-STACK <i>·</i> AI <i>·</i> AVAILABLE FOR FREELANCE <i>·</i> MUMBAI <i>·</i> FULL-STACK <i>·</i> AI <i>·</i>&nbsp;</span>
+    </div>
+  </div>
 
 </main>
 
