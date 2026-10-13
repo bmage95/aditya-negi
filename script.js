@@ -356,3 +356,88 @@ document.addEventListener('keydown', function(e) {
     btn.remove();
   });
 })();
+
+// ---------- full-size photographs ----------
+(() => {
+  const photos = [...document.querySelectorAll('[data-photo]')];
+  const dialog = document.getElementById('photoDialog');
+  if (!photos.length || !dialog) return;
+  const image = document.getElementById('photoDialogImage');
+  const caption = document.getElementById('photoDialogCaption');
+  const position = document.getElementById('photoPosition');
+  let current = 0;
+  let previousOverflow = '';
+  let opener;
+
+  function showPhoto(index) {
+    current = (index + photos.length) % photos.length;
+    const photo = photos[current];
+    image.src = photo.dataset.photo;
+    image.alt = photo.querySelector('img').alt;
+    caption.textContent = photo.dataset.caption;
+    position.textContent = `${String(current + 1).padStart(2, '0')} / ${String(photos.length).padStart(2, '0')}`;
+  }
+
+  photos.forEach((photo, index) => {
+    photo.addEventListener('click', () => {
+      opener = photo;
+      showPhoto(index);
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      dialog.showModal();
+    });
+  });
+  document.getElementById('photoClose').addEventListener('click', () => dialog.close());
+  document.getElementById('photoPrev').addEventListener('click', () => showPhoto(current - 1));
+  document.getElementById('photoNext').addEventListener('click', () => showPhoto(current + 1));
+  dialog.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab') {
+      const controls = [...dialog.querySelectorAll('button')];
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      showPhoto(current + (event.key === 'ArrowRight' ? 1 : -1));
+    }
+  });
+  // Only a press and release outside the dialog dismisses the backdrop.
+  let backdropPress = false;
+  const outside = (event) => {
+    const r = dialog.getBoundingClientRect();
+    return event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom;
+  };
+  dialog.addEventListener('pointerdown', (event) => { backdropPress = outside(event); });
+  dialog.addEventListener('click', (event) => {
+    if (backdropPress && outside(event)) dialog.close();
+    backdropPress = false;
+  });
+  dialog.addEventListener('close', () => {
+    document.body.style.overflow = previousOverflow;
+    opener?.focus({ preventScroll: true });
+  });
+})();
+
+// ---------- click-to-load YouTube film ----------
+(() => {
+  const button = document.getElementById('playBuildFilm');
+  const player = document.getElementById('buildFilmPlayer');
+  if (!button || !player) return;
+  button.addEventListener('click', () => {
+    const frame = document.createElement('iframe');
+    frame.src = 'https://www.youtube-nocookie.com/embed/mDxeUnbUOn0?autoplay=1&rel=0';
+    frame.title = 'How We Built a Custom AI System for a Real Business';
+    frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    player.replaceChildren(frame);
+    frame.focus();
+  }, { once: true });
+})();
