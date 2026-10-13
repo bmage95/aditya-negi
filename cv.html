@@ -31,6 +31,10 @@
       margin: 0 auto;
     }
 
+    a { color: inherit; text-decoration: none; }
+    a:hover, a:focus-visible { text-decoration: underline; }
+    .project-link { font-weight: 400; color: var(--accent); font-size: 7pt; }
+
     /* ── Print page setup ── */
     @page {
       size: A4 portrait;
@@ -317,8 +321,8 @@
         <h2>Contact</h2>
         <ul class="contact-list">
           <li><span class="icon">✉</span><a href="mailto:adityanegi2206@gmail.com">adityanegi2206<br>@gmail.com</a></li>
-          <li><span class="icon">✆</span>+91 9811403774</li>
-          <li><span class="icon">⬡</span><a href="https://adityanegi.com">adityanegi.com</a></li>
+          <li><span class="icon">✆</span><a href="tel:+919811403774">+91 9811403774</a></li>
+          <li><span class="icon">⬡</span><a href="https://aditya-negi.com">aditya-negi.com</a></li>
           <li><span class="icon">⌥</span><a href="https://github.com/bmage95">github.com/bmage95</a></li>
           <li><span class="icon">in</span><a href="https://linkedin.com/in/aditya-negi-9a12a2223">linkedin.com/in/<br>aditya-negi-9a12a2223</a></li>
         </ul>
@@ -454,7 +458,7 @@
             <span class="exp-date">Aug 2023 – Jul 2024</span>
           </div>
           <div class="exp-company">JPMorgan Chase &amp; Co</div>
-          <div class="exp-desc">Feature development &amp; maintenance of <em>Team Vision</em> — an audio-library app for the visually challenged; live on Play Store.</div>
+          <div class="exp-desc">Feature development &amp; maintenance of <a href="https://play.google.com/store/apps/details?id=com.team_vision.audio_library"><em>Team Vision</em></a> — an audio-library app for the visually challenged; live on <a href="https://play.google.com/store/apps/details?id=com.team_vision.audio_library">Play Store</a>.</div>
         </div>
       </div>
 
@@ -464,42 +468,42 @@
 
         <div class="exp-item">
           <div class="exp-header">
-            <span class="exp-title">Kautilya PE <span style="font-weight:400;color:var(--accent);font-size:7pt;">kautilya-pe.com</span></span>
+            <a class="exp-title" href="https://kautilya.pe">Kautilya PE <span class="project-link">kautilya.pe</span></a>
           </div>
-          <div class="exp-desc">Corporate website for a private equity firm; TypeScript, full-stack.</div>
+          <div class="exp-desc">Corporate website for a buy-side M&amp;A advisory firm; TypeScript, full-stack.</div>
         </div>
 
         <div class="exp-item">
           <div class="exp-header">
-            <span class="exp-title">Palette Wealth <a href="https://palettewealth.com" style="font-weight:400;color:var(--accent);font-size:7pt;text-decoration:none;">palettewealth.com</a></span>
+            <a class="exp-title" href="https://palettewealth.com">Palette Wealth <span class="project-link">palettewealth.com</span></a>
           </div>
           <div class="exp-desc">Corporate website for a wealth management firm, showcasing services, team &amp; investment approach.</div>
         </div>
 
         <div class="exp-item">
           <div class="exp-header">
-            <span class="exp-title">MyCreativeCamp <span style="font-weight:400;color:var(--accent);font-size:7pt;">mycreativecamp.com</span></span>
+            <a class="exp-title" href="https://mycreativecamp.com">MyCreativeCamp <span class="project-link">mycreativecamp.com</span></a>
           </div>
           <div class="exp-desc">Shopify e-commerce platform for creative workshops &amp; camps, incl. wholesale/B2B setup.</div>
         </div>
 
         <div class="exp-item">
           <div class="exp-header">
-            <span class="exp-title">PE OS <a href="https://avise.io" style="font-weight:400;color:var(--accent);font-size:7pt;text-decoration:none;">avise.io</a></span>
+            <a class="exp-title" href="https://avise.io">Avise (PE OS) <span class="project-link">avise.io</span></a>
           </div>
-          <div class="exp-desc">AI-native operating system for private equity: automated deal flow analysis, institutional CRM, portfolio intelligence.</div>
+          <div class="exp-desc">Deal flow platform for private equity teams &amp; search funds: CRM, data rooms &amp; AI-powered financial analysis.</div>
         </div>
 
         <div class="exp-item">
           <div class="exp-header">
-            <span class="exp-title">Arenaze <span style="font-weight:400;color:var(--accent);font-size:7pt;">arenaze.com</span></span>
+            <a class="exp-title" href="https://arenaze.com">Arenaze <span class="project-link">arenaze.com</span></a>
           </div>
           <div class="exp-desc">Operator console for gaming caf&eacute;s: live device monitoring, bookings &amp; billing on a double-booking-safe Postgres backend.</div>
         </div>
 
         <div class="exp-item">
           <div class="exp-header">
-            <span class="exp-title">MPSTME OnTrack</span>
+            <a class="exp-title" href="https://aditya-negi.com/ontrack-demo.mp4">MPSTME OnTrack</a>
             <span class="exp-date">GDSC 2023–24</span>
           </div>
           <div class="exp-desc">Cross-platform Flutter campus app with interactive floorplans &amp; navigation, live on App Store &amp; Play Store.</div>
@@ -507,7 +511,7 @@
 
         <div class="exp-item">
           <div class="exp-header">
-            <span class="exp-title">Team Vision Audio Library <span style="font-weight:400;color:var(--accent);font-size:7pt;">Play Store · 4.9★</span></span>
+            <a class="exp-title" href="https://play.google.com/store/apps/details?id=com.team_vision.audio_library">Team Vision Audio Library <span class="project-link">Play Store · 4.9★</span></a>
             <span class="exp-date">JPMC Code for Good</span>
           </div>
           <div class="exp-desc">Audiobook app for the visually challenged, built for the Team Vision Foundation NGO via JPMorgan's Code for Good; touch-gesture UX, 1K+ downloads.</div>
@@ -515,7 +519,7 @@
 
         <div class="exp-item" style="margin-bottom:0">
           <div class="exp-header">
-            <span class="exp-title">Agentic AI Systems</span>
+            <a class="exp-title" href="https://aditya-negi.com/agentic.html">Agentic AI Systems</a>
           </div>
           <div class="exp-desc">Custom agentic AI &amp; RAG builds for companies: intelligent search, multi-agent orchestration, LLM automation. Top-15 at GDG Mumbai 18-hr hackathon (n8n workflow generation from prompts, 2025).</div>
         </div>
